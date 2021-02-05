@@ -4,7 +4,7 @@ function ClickConnect(){
   document.querySelector("#top-toolbar > colab-connect-button").shadowRoot.querySelector("#connect").click();
   console.log("Connnect Clicked - End"); 
 };
-setInterval(ClickConnect, 60000)
+setInterval(ClickConnect, 300000)
 
 
 // with start/stop control
@@ -15,7 +15,7 @@ var startClickConnect = function startClickConnect(){
         console.log("Connnect Clicked - End"); 
     };
 
-    var intervalId = setInterval(clickConnect, 60000);
+    var intervalId = setInterval(clickConnect, 300000);
 
     var stopClickConnectHandler = function stopClickConnect() {
         console.log("Connnect Clicked Stopped - Start");
