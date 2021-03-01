@@ -1,0 +1,12 @@
+# Introduction
+Cassava Leaf Disease Classification is a multiclass classification competition held at Kaggle (https://www.kaggle.com/c/cassava-leaf-disease-classification). As the second-largest provider of carbohydrates in Africa, cassava is a key food security crop grown by smallholder farmers because it can withstand harsh conditions. However, viral diseases are major sources of poor yields. The objective of this competition is to identify the common diseases with the help of data science and machine learning. 
+
+In this competition, the train dataset includes 21,367 labelled images of Cassava leaves with four categories of diseases or healthy Cassava leaves. Your task is to classify each image into the one of the five categories mentioned above. 
+
+# My Approach
+After the exploratory data analysis, I found that the dataset is unbalanced with the 61.9% of images labelled with CMD (Cassava Mosaic Disease), a type of Cassava leaf disease. Then I augmented the dataset by downsampling the majority class samples and upsampling the minority classes samples through various image scaling and color shifting. I split the dataset into 5 folds using StratifiedKFold. It turned out that, with the new dataset, the CV score on the development set did not improve compared to the original dataset. Then I tried to use the random weighted sampler during the training procedure to increase the number of minority training samples getting trained. Using this approach, I trained four models (one resnext50, and three tf_efficientnet models with different seeds) with individual cv scores as 0.894, 0.898, 0.895, 0.893. 
+
+The training image augmentation was very heavy, including various types of flips, rotations, scale shifting, change of brightness and color saturations, and random coarse dropouts. This is because the training Cassava images were collected from different places and different time during the day, which included many irrelevant factors to the characteristics of Cassava Leaf Disease that can help with classification. Therefore, heavy augmentation can make the model more robust to such noise. The validation augmentation included just center crop and normalization. At the test stage, test-time-augmentation was also applied.  
+
+# Result
+The model scored 90.11% accuracy in the public leaderboard and 90.01% in the private leaderboard, ranked 84 out of 3947 competitors (top 3%) (https://www.kaggle.com/c/cassava-leaf-disease-classification/leaderboard).
