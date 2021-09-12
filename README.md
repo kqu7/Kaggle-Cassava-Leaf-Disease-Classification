@@ -3,14 +3,14 @@ Cassava Leaf Disease Classification is a multiclass classification competition h
 
 In this competition, the training dataset includes 21,367 labelled images of Cassava leaves with four categories of diseases or a healthy category. The task is to classify each image into one of the five categories above. 
 
-![intro-img](./images/cassava-leaf-disease.png)
+![intro-img](./image/cassava-leaf-disease.png)
 
 # Summary
 
 ## Exploratory Data Analysis
 The dataset was unbalanced with 61.9% of training images labelled with CMD (Cassava Mosaic Disease). Dataset augmentation was done by by downsampling the majority class samples and upsampling the minority classes samples through various image scaling and color shifting. The dataset was split into 5 folds using StratifiedKFold. A random weighted sampler was also applied during the training process to increase the number of minority samples being trained. I trained four models (one resnext50 model, and three tf_efficientnet models with different seeds and one with CUTMIX applied while training) with individual 5-fold cross-validation scores as 0.894, 0.898, 0.895, 0.893. 
 
-![data_distribution](./images/data_distribution.png)
+![data_distribution](./image/data_distribution.png)
 
 ## Model
 | Model           | CV          |
@@ -22,13 +22,13 @@ The dataset was unbalanced with 61.9% of training images labelled with CMD (Cass
 
 The ensemble of the above models delivered 90.11% accuray on the public data and 90.01% accuracy on the private data.
 
-![ensemble](./images/cassava_model.jpg)
+![ensemble](./image/cassava_model.jpg)
 
 
 ## Inference & Result
 The training image augmentation was very heavy, including various types of flips, rotations, scale shifting, change of brightness and color saturations, and random coarse dropouts. 
 
-![image-augmentation](./images/augmentation.png)
+![image-augmentation](./image/augmentation.png)
 
 
 Heavy image transformation was applied because the training images were collected from different places and during different time in a day. Thus, the training images contained many irrelevant objects that did not help with the classification task. Using heavy image augmentation can make the model more robust to such noise. The validation augmentation included center crop and normalization. At the inference stage, test-time augmentation was applied to increase accuracy.   
