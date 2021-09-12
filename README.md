@@ -25,7 +25,7 @@ The ensemble of the above models delivered 90.11% accuray on the public data and
 ![ensemble](./image/cassava_model.jpg)
 
 
-## Inference & Result
+## Data Augmentation
 The training image augmentation was very heavy, including various types of flips, rotations, scale shifting, change of brightness and color saturations, and random coarse dropouts. 
 
 ![image-augmentation](./image/augmentation.png)
@@ -45,4 +45,4 @@ The project has the following structure:
 - `pretrained-model/`: model configurations and weights pretrained on external datasets
 
 # Result
-The final ensembled model with 8x TTA scored 90.11% accuracy in the public leaderboard and 90.01% in the private leaderboard, ranked 84 out of 3947 competitors (top 3%) (https://www.kaggle.com/c/cassava-leaf-disease-classification/leaderboard).
+The final ensembled model with 8x TTA scored 90.11% accuracy in the public leaderboard and 90.01% in the private leaderboard, ranked 84 out of 3947 competitors (top 3%) (https://www.kaggle.com/c/cassava-leaf-disease-classification/leaderboard) and was awarded a competition silver medal.
